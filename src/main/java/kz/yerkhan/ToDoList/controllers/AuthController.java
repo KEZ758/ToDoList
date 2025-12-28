@@ -4,6 +4,7 @@ import kz.yerkhan.ToDoList.dto.AuthRequest;
 import kz.yerkhan.ToDoList.jwt.JwtUtils;
 import kz.yerkhan.ToDoList.models.User;
 import kz.yerkhan.ToDoList.repositories.UserRepository;
+import kz.yerkhan.ToDoList.service.AuthService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -25,26 +26,17 @@ public class AuthController {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final JwtUtils jwtUtils;
+    private final AuthService authService;
+
 
     @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody User user) {
-        if (userRepository.existsByEmail(user.getEmail())) {
-            throw new IllegalArgumentException("Email already in use");
-        }
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
-        userRepository.save(user);
-
-        String token = jwtUtils.generateToken(user.getEmail());
-        return ResponseEntity.ok(token);
+        return ResponseEntity.ok(authService.registerUser(user));
     }
 
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody AuthRequest request) {
-        authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(request.getEmail(), request.getPassword())
-        );
-        String token = jwtUtils.generateToken(request.getEmail());
-        return ResponseEntity.ok(token);
+        return ResponseEntity.ok(authService.login(request.getEmail(), request.getPassword()));
     }
 
     @PostMapping("/logout")
