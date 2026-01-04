@@ -12,7 +12,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long id;
+    private Long id;
 
     @Column(unique = true, nullable = false)
     @Email
@@ -20,7 +20,7 @@ public class User {
 
     private String name;
 
-    @Column(name = "password_hash", nullable = false)
+    @Column(nullable = false)
     private String password;
 
 }

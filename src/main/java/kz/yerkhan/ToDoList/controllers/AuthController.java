@@ -1,5 +1,6 @@
 package kz.yerkhan.ToDoList.controllers;
 
+import jakarta.validation.Valid;
 import kz.yerkhan.ToDoList.dto.AuthRequest;
 import kz.yerkhan.ToDoList.jwt.JwtUtils;
 import kz.yerkhan.ToDoList.models.User;
@@ -26,8 +27,9 @@ public class AuthController {
 
 
     @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody User user) {
-        return ResponseEntity.ok(authService.registerUser(user));
+    public ResponseEntity<?> register(@Valid @RequestBody AuthRequest request) {
+
+        return ResponseEntity.ok(authService.registerUser(request));
     }
 
     @PostMapping("/login")
