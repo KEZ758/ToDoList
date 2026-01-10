@@ -41,14 +41,16 @@ public class AuthService {
         userRepository.save(user);
         createDefaultCategories(user);
 
-        return jwtUtils.generateToken(user.getEmail());
+        return jwtUtils.generateToken(user);
     }
 
     @Transactional
     public String login(String email, String password) {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow();
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(email, password));
-        return jwtUtils.generateToken(email);
+        return jwtUtils.generateToken(user);
     }
 
     private void createDefaultCategories(User user) {

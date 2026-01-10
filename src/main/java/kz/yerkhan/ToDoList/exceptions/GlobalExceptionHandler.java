@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 import java.util.Date;
-import java.util.stream.Collectors;
 
 @RestControllerAdvice
 @Slf4j
@@ -59,5 +58,16 @@ public class GlobalExceptionHandler {
                 message,
                 new Date()
         ), HttpStatus.BAD_REQUEST);
+    }
+
+    @ExceptionHandler(ResourceNotFoundException.class)
+    public ResponseEntity<AppError> handleResourceNotFound(ResourceNotFoundException e) {
+        log.error("Ресурс не найден: {}", e.getMessage());
+
+        return new ResponseEntity<>(new AppError(
+                HttpStatus.NOT_FOUND.value(), // 404
+                e.getMessage(),
+                new Date()
+        ), HttpStatus.NOT_FOUND);
     }
 }

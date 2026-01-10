@@ -29,7 +29,11 @@ public class TodoController {
 
         String email = SecurityContextHolder.getContext().getAuthentication().getName();
 
-
         return ResponseEntity.ok(todoService.createTodo(todoRequest, email));
     }
+
 }
+
+
+
+

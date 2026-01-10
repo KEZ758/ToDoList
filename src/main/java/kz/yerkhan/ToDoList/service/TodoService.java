@@ -3,6 +3,7 @@ package kz.yerkhan.ToDoList.service;
 
 import kz.yerkhan.ToDoList.dto.TodoRequest;
 import kz.yerkhan.ToDoList.dto.TodoResponse;
+import kz.yerkhan.ToDoList.exceptions.ResourceNotFoundException;
 import kz.yerkhan.ToDoList.helpers.TodoMapper;
 import kz.yerkhan.ToDoList.models.Category;
 import kz.yerkhan.ToDoList.models.Todo;
@@ -19,7 +20,7 @@ public class TodoService {
 
     private final TodoRepository todoRepository;
     private final UserRepository userRepository;
-    private final CategoryRepository categoryRepository;
+    private final CategoryService categoryService;
     private final TodoMapper todoMapper;
 
     public TodoResponse createTodo(TodoRequest todoRequest, String email) {
@@ -31,13 +32,8 @@ public class TodoService {
 
         if (todoRequest.getCategoryId() != null) {
 
-            Category category = categoryRepository.findById(todoRequest.getCategoryId())
-                    .orElseThrow(() -> new RuntimeException("Category not found with id: " + todoRequest.getCategoryId()));
-
-
-            if (!category.getUser().getId().equals(user.getId())) {
-                throw new RuntimeException("Вы не можете использовать чужую категорию!");
-            }
+            Category category = categoryService.getCategoryById(todoRequest.getCategoryId())
+                            .orElseThrow(() -> new ResourceNotFoundException("Категория с ID " + todoRequest.getCategoryId() + " не найдена"));
 
             todo.setCategory(category);
         } else {
