@@ -14,4 +14,5 @@ public class TodoResponse {
     private LocalDateTime dueDate;
     private LocalDateTime createdAt;
     private String categoryTitle;
+    private Long categoryId;
 }

@@ -29,6 +29,7 @@ public class TodoMapper {
 
         if (todo.getCategory() != null) {
             response.setCategoryTitle(todo.getCategory().getTitle());
+            response.setCategoryId(todo.getCategory().getId());
         } else {
             response.setCategoryTitle("Без категории");
         }
@@ -50,8 +51,9 @@ public class TodoMapper {
 
         todo.setDueDate(request.getDueDate());
 
-        todo.setCompleted(false);
+        todo.setCompleted(request.isCompleted());
 
         return todo;
     }
+
 }

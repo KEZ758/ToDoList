@@ -1,6 +1,7 @@
 package kz.yerkhan.ToDoList.service;
 
 
+import kz.yerkhan.ToDoList.dto.CategoryRequest;
 import kz.yerkhan.ToDoList.dto.CategoryResponse;
 import kz.yerkhan.ToDoList.models.Category;
 import kz.yerkhan.ToDoList.models.User;
@@ -42,6 +43,18 @@ public class CategoryService {
         return categoryRepository.findById(id);
     }
 
+    public CategoryResponse addCategory(String userEmail, CategoryRequest categoryRequest) {
+        User user = userRepository.findByEmail(userEmail)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        Category category = new Category();
+        category.setTitle(categoryRequest.getTitle());
+        category.setUser(user);
+        categoryRepository.save(category);
+        return mapToCategoryResponse(category);
+    }
 
+    public void deleteCategoryById(long id) {
+        categoryRepository.deleteById(id);
+    }
 
 }
