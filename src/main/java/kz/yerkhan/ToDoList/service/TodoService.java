@@ -2,6 +2,7 @@ package kz.yerkhan.ToDoList.service;
 
 
 
+import kz.yerkhan.ToDoList.dto.StatsResponse;
 import kz.yerkhan.ToDoList.dto.TodoRequest;
 import kz.yerkhan.ToDoList.dto.TodoResponse;
 import kz.yerkhan.ToDoList.exceptions.ResourceNotFoundException;
@@ -15,7 +16,11 @@ import kz.yerkhan.ToDoList.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @Service
@@ -100,6 +105,48 @@ public class TodoService {
 
     public void deleteTodo(Long todoId) {
         todoRepository.deleteById(todoId);
+    }
+
+    public StatsResponse getUserStats(String email) {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new RuntimeException("User not found"));
+        Long userId = user.getId();
+
+        LocalDateTime startOfDay = LocalDate.now().atStartOfDay();
+        LocalDateTime endOfDay = LocalDate.now().atTime(LocalTime.MAX);
+
+        Long totalToday = todoRepository.countByUserIdAndDueDateBetween(userId, startOfDay, endOfDay);
+        Long completedToday = todoRepository.countByUserIdAndDueDateBetweenAndCompletedTrue(userId, startOfDay, endOfDay);
+
+        int streak = calculateStreak(userId);
+
+        return new StatsResponse(streak, totalToday.intValue(), completedToday.intValue());
+    }
+
+    private int calculateStreak(Long userId) {
+        List<LocalDateTime> dates = todoRepository.findCompletedDatesByUserId(userId);
+
+        if (dates.isEmpty()) return 0;
+
+        int streak = 0;
+        LocalDate checkDate = LocalDate.now();
+
+        Set<LocalDate> completedDays = dates.stream()
+                .map(LocalDateTime::toLocalDate)
+                .collect(Collectors.toSet());
+
+        if (!completedDays.contains(checkDate)) {
+            checkDate = checkDate.minusDays(1);
+            if (!completedDays.contains(checkDate)) {
+                return 0;
+            }
+        }
+        while (completedDays.contains(checkDate)) {
+            streak++;
+            checkDate = checkDate.minusDays(1);
+        }
+        return streak;
+
     }
 
 

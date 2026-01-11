@@ -958,3 +958,93 @@ Caused by: java.time.DateTimeException: Invalid value for MonthOfYear (valid val
 2026-01-11T19:31:29.488+05:00  INFO 66600 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
 2026-01-11T19:31:29.489+05:00  INFO 66600 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
 2026-01-11T19:31:29.492+05:00  INFO 66600 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2026-01-11T20:14:46.707+05:00  INFO 66600 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-11T20:14:46.789+05:00  INFO 66600 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-11T20:14:46.802+05:00  INFO 66600 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-01-11T20:14:52.548+05:00  INFO 67582 --- [main] k.yerkhan.ToDoList.ToDoListApplication   : Starting ToDoListApplication using Java 25 with PID 67582 (/Users/Yerhan/Desktop/JavaCourse/ToDoList/target/classes started by Yerhan in /Users/Yerhan/Desktop/JavaCourse/ToDoList)
+2026-01-11T20:14:52.550+05:00  INFO 67582 --- [main] k.yerkhan.ToDoList.ToDoListApplication   : No active profile set, falling back to 1 default profile: "default"
+2026-01-11T20:14:52.933+05:00  INFO 67582 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-11T20:14:52.962+05:00  INFO 67582 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 24 ms. Found 3 JPA repository interfaces.
+2026-01-11T20:14:53.254+05:00  INFO 67582 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-01-11T20:14:53.261+05:00  INFO 67582 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-11T20:14:53.262+05:00  INFO 67582 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2026-01-11T20:14:53.281+05:00  INFO 67582 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-01-11T20:14:53.281+05:00  INFO 67582 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 703 ms
+2026-01-11T20:14:53.347+05:00  INFO 67582 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-11T20:14:53.377+05:00  INFO 67582 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2026-01-11T20:14:53.393+05:00  INFO 67582 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-01-11T20:14:53.555+05:00  INFO 67582 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-11T20:14:53.570+05:00  INFO 67582 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-01-11T20:14:53.693+05:00  INFO 67582 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@65d73bd
+2026-01-11T20:14:53.694+05:00  INFO 67582 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-01-11T20:14:53.770+05:00  WARN 67582 --- [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-01-11T20:14:54.254+05:00  INFO 67582 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-11T20:14:54.343+05:00  INFO 67582 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-11T20:14:54.508+05:00  INFO 67582 --- [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2026-01-11T20:14:54.509+05:00  WARN 67582 --- [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2026-01-11T20:14:54.549+05:00  INFO 67582 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-01-11T20:14:54.728+05:00  WARN 67582 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-11T20:14:54.944+05:00  INFO 67582 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2026-01-11T20:14:54.949+05:00  INFO 67582 --- [main] k.yerkhan.ToDoList.ToDoListApplication   : Started ToDoListApplication in 2.613 seconds (process running for 3.092)
+2026-01-11T20:15:11.480+05:00  INFO 67582 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-11T20:15:11.492+05:00  INFO 67582 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-11T20:15:11.495+05:00  INFO 67582 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-01-11T20:15:14.720+05:00  INFO 67613 --- [main] k.yerkhan.ToDoList.ToDoListApplication   : Starting ToDoListApplication using Java 25 with PID 67613 (/Users/Yerhan/Desktop/JavaCourse/ToDoList/target/classes started by Yerhan in /Users/Yerhan/Desktop/JavaCourse/ToDoList)
+2026-01-11T20:15:14.722+05:00  INFO 67613 --- [main] k.yerkhan.ToDoList.ToDoListApplication   : No active profile set, falling back to 1 default profile: "default"
+2026-01-11T20:15:15.505+05:00  INFO 67613 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-11T20:15:15.541+05:00  INFO 67613 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 32 ms. Found 3 JPA repository interfaces.
+2026-01-11T20:15:15.813+05:00  INFO 67613 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-01-11T20:15:15.819+05:00  INFO 67613 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-11T20:15:15.820+05:00  INFO 67613 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2026-01-11T20:15:15.838+05:00  INFO 67613 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-01-11T20:15:15.838+05:00  INFO 67613 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 956 ms
+2026-01-11T20:15:15.901+05:00  INFO 67613 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-11T20:15:15.925+05:00  INFO 67613 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2026-01-11T20:15:15.940+05:00  INFO 67613 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-01-11T20:15:16.091+05:00  INFO 67613 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-11T20:15:16.104+05:00  INFO 67613 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-01-11T20:15:16.193+05:00  INFO 67613 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@6e239337
+2026-01-11T20:15:16.194+05:00  INFO 67613 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-01-11T20:15:16.227+05:00  WARN 67613 --- [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-01-11T20:15:16.638+05:00  INFO 67613 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-11T20:15:16.692+05:00  INFO 67613 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-11T20:15:17.070+05:00  INFO 67613 --- [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2026-01-11T20:15:17.071+05:00  WARN 67613 --- [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2026-01-11T20:15:17.148+05:00  INFO 67613 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-01-11T20:15:17.585+05:00  WARN 67613 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-11T20:15:17.858+05:00  INFO 67613 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2026-01-11T20:15:17.862+05:00  INFO 67613 --- [main] k.yerkhan.ToDoList.ToDoListApplication   : Started ToDoListApplication in 3.693 seconds (process running for 4.243)
+2026-01-11T20:15:34.814+05:00  INFO 67613 --- [http-nio-8080-exec-2] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-11T20:15:34.815+05:00  INFO 67613 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-01-11T20:15:34.818+05:00  INFO 67613 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 3 ms
+2026-01-11T20:54:22.784+05:00  INFO 67613 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2026-01-11T20:54:22.818+05:00  INFO 67613 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2026-01-11T20:54:22.824+05:00  INFO 67613 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2026-01-11T20:54:28.655+05:00  INFO 68453 --- [main] k.yerkhan.ToDoList.ToDoListApplication   : Starting ToDoListApplication using Java 25 with PID 68453 (/Users/Yerhan/Desktop/JavaCourse/ToDoList/target/classes started by Yerhan in /Users/Yerhan/Desktop/JavaCourse/ToDoList)
+2026-01-11T20:54:28.656+05:00  INFO 68453 --- [main] k.yerkhan.ToDoList.ToDoListApplication   : No active profile set, falling back to 1 default profile: "default"
+2026-01-11T20:54:29.026+05:00  INFO 68453 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2026-01-11T20:54:29.057+05:00  INFO 68453 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 26 ms. Found 3 JPA repository interfaces.
+2026-01-11T20:54:29.302+05:00  INFO 68453 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2026-01-11T20:54:29.311+05:00  INFO 68453 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2026-01-11T20:54:29.311+05:00  INFO 68453 --- [main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.31]
+2026-01-11T20:54:29.331+05:00  INFO 68453 --- [main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2026-01-11T20:54:29.331+05:00  INFO 68453 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 644 ms
+2026-01-11T20:54:29.403+05:00  INFO 68453 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2026-01-11T20:54:29.431+05:00  INFO 68453 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.5.3.Final
+2026-01-11T20:54:29.447+05:00  INFO 68453 --- [main] o.h.c.internal.RegionFactoryInitiator    : HHH000026: Second-level cache disabled
+2026-01-11T20:54:29.612+05:00  INFO 68453 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2026-01-11T20:54:29.625+05:00  INFO 68453 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2026-01-11T20:54:29.739+05:00  INFO 68453 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@d1c5cf2
+2026-01-11T20:54:29.740+05:00  INFO 68453 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2026-01-11T20:54:29.803+05:00  WARN 68453 --- [main] org.hibernate.orm.deprecation            : HHH90000025: PostgreSQLDialect does not need to be specified explicitly using 'hibernate.dialect' (remove the property setting and it will be selected by default)
+2026-01-11T20:54:30.222+05:00  INFO 68453 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000489: No JTA platform available (set 'hibernate.transaction.jta.platform' to enable JTA platform integration)
+2026-01-11T20:54:30.332+05:00  INFO 68453 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2026-01-11T20:54:30.506+05:00  INFO 68453 --- [main] eAuthenticationProviderManagerConfigurer : Global AuthenticationManager configured with AuthenticationProvider bean with name authenticationProvider
+2026-01-11T20:54:30.506+05:00  WARN 68453 --- [main] r$InitializeUserDetailsManagerConfigurer : Global AuthenticationManager configured with an AuthenticationProvider bean. UserDetailsService beans will not be used for username/password login. Consider removing the AuthenticationProvider bean. Alternatively, consider using the UserDetailsService in a manually instantiated DaoAuthenticationProvider.
+2026-01-11T20:54:30.570+05:00  INFO 68453 --- [main] o.s.d.j.r.query.QueryEnhancerFactory     : Hibernate is in classpath; If applicable, HQL parser will be used.
+2026-01-11T20:54:30.824+05:00  WARN 68453 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2026-01-11T20:54:31.044+05:00  INFO 68453 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path '/'
+2026-01-11T20:54:31.049+05:00  INFO 68453 --- [main] k.yerkhan.ToDoList.ToDoListApplication   : Started ToDoListApplication in 2.627 seconds (process running for 3.106)
+2026-01-11T20:54:57.420+05:00  INFO 68453 --- [http-nio-8080-exec-1] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-01-11T20:54:57.421+05:00  INFO 68453 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2026-01-11T20:54:57.431+05:00  INFO 68453 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 10 ms

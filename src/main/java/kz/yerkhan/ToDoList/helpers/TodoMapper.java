@@ -5,6 +5,8 @@ import kz.yerkhan.ToDoList.dto.TodoResponse;
 import kz.yerkhan.ToDoList.models.Todo;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDateTime;
+
 @Component
 public class TodoMapper {
 
@@ -34,6 +36,8 @@ public class TodoMapper {
             response.setCategoryTitle("Без категории");
         }
 
+        response.setTimeStatus(calculateTimeStatus(todo));
+
         return response;
     }
 
@@ -54,6 +58,29 @@ public class TodoMapper {
         todo.setCompleted(request.isCompleted());
 
         return todo;
+    }
+
+    private String calculateTimeStatus(Todo todo) {
+        if (todo.isCompleted()) {
+            return "COMPLETED";
+        }
+
+        if (todo.getDueDate() == null) {
+            return "SOMEDAY";
+        }
+
+        LocalDateTime now = LocalDateTime.now();
+        LocalDateTime dueDate = todo.getDueDate();
+
+        if (dueDate.isBefore(now)) {
+            return "OVERDUE";
+        }
+
+        if (dueDate.toLocalDate().isEqual(now.toLocalDate())) {
+            return "TODAY";
+        }
+
+        return "UPCOMING";
     }
 
 }

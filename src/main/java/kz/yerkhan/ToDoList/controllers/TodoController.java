@@ -2,6 +2,7 @@ package kz.yerkhan.ToDoList.controllers;
 
 
 
+import kz.yerkhan.ToDoList.dto.StatsResponse;
 import kz.yerkhan.ToDoList.dto.TodoRequest;
 import kz.yerkhan.ToDoList.dto.TodoResponse;
 import kz.yerkhan.ToDoList.service.TodoService;
@@ -46,6 +47,12 @@ public class TodoController {
     public ResponseEntity<?> deleteTodo(@PathVariable Long id) {
         todoService.deleteTodo(id);
         return ResponseEntity.ok("Todo deleted successfully");
+    }
+
+    @GetMapping("/stats")
+    public ResponseEntity<StatsResponse> getStats() {
+        String email = SecurityContextHolder.getContext().getAuthentication().getName();
+        return ResponseEntity.ok(todoService.getUserStats(email));
     }
 
 

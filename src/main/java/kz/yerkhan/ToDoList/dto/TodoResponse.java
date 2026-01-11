@@ -15,4 +15,5 @@ public class TodoResponse {
     private LocalDateTime createdAt;
     private String categoryTitle;
     private Long categoryId;
+    private String timeStatus;
 }
