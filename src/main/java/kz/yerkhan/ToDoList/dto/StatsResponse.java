@@ -7,6 +7,10 @@ import lombok.Data;
 @AllArgsConstructor
 public class StatsResponse {
     private int currentStreak;
-    private int totalTasksToday;
-    private int completedTasksToday;
+
+    private PeriodStats today;
+    private PeriodStats week;
+    private PeriodStats month;
+    private PeriodStats year;
+
 }

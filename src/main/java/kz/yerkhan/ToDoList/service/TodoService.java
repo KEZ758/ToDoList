@@ -2,6 +2,7 @@ package kz.yerkhan.ToDoList.service;
 
 
 
+import kz.yerkhan.ToDoList.dto.PeriodStats;
 import kz.yerkhan.ToDoList.dto.StatsResponse;
 import kz.yerkhan.ToDoList.dto.TodoRequest;
 import kz.yerkhan.ToDoList.dto.TodoResponse;
@@ -16,9 +17,11 @@ import kz.yerkhan.ToDoList.repositories.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.temporal.TemporalAdjusters;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
@@ -112,15 +115,25 @@ public class TodoService {
                 .orElseThrow(() -> new RuntimeException("User not found"));
         Long userId = user.getId();
 
-        LocalDateTime startOfDay = LocalDate.now().atStartOfDay();
-        LocalDateTime endOfDay = LocalDate.now().atTime(LocalTime.MAX);
-
-        Long totalToday = todoRepository.countByUserIdAndDueDateBetween(userId, startOfDay, endOfDay);
-        Long completedToday = todoRepository.countByUserIdAndDueDateBetweenAndCompletedTrue(userId, startOfDay, endOfDay);
+        LocalDate today = LocalDate.now();
 
         int streak = calculateStreak(userId);
 
-        return new StatsResponse(streak, totalToday.intValue(), completedToday.intValue());
+        PeriodStats dailyStats = getStatsForPeriod(userId, today.atStartOfDay(), today.atTime(LocalTime.MAX));
+
+        PeriodStats weeklyStats = getStatsForPeriod(userId,
+                today.with(TemporalAdjusters.previousOrSame(DayOfWeek.MONDAY)).atStartOfDay(),
+                today.with(TemporalAdjusters.nextOrSame(DayOfWeek.SUNDAY)).atTime(LocalTime.MAX));
+
+        PeriodStats monthlyStats = getStatsForPeriod(userId,
+                today.with(TemporalAdjusters.firstDayOfMonth()).atStartOfDay(),
+                today.with(TemporalAdjusters.lastDayOfMonth()).atTime(LocalTime.MAX));
+
+        PeriodStats yearlyStats = getStatsForPeriod(userId,
+                today.with(TemporalAdjusters.firstDayOfYear()).atStartOfDay(),
+                today.with(TemporalAdjusters.lastDayOfYear()).atTime(LocalTime.MAX));
+
+        return new StatsResponse(streak, dailyStats, weeklyStats, monthlyStats, yearlyStats);
     }
 
     private int calculateStreak(Long userId) {
@@ -147,6 +160,12 @@ public class TodoService {
         }
         return streak;
 
+    }
+
+    private PeriodStats getStatsForPeriod(Long userId, LocalDateTime start, LocalDateTime end) {
+        Long total = todoRepository.countByUserIdAndDueDateBetween(userId, start, end);
+        Long completed = todoRepository.countByUserIdAndDueDateBetweenAndCompletedTrue(userId, start, end);
+        return new PeriodStats(total.intValue(), completed.intValue());
     }
 
 
