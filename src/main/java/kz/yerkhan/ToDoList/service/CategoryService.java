@@ -7,7 +7,6 @@ import kz.yerkhan.ToDoList.models.Category;
 import kz.yerkhan.ToDoList.models.User;
 import kz.yerkhan.ToDoList.repositories.CategoryRepository;
 import kz.yerkhan.ToDoList.repositories.UserRepository;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import org.springframework.stereotype.Service;
 

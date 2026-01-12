@@ -1,7 +1,6 @@
 package kz.yerkhan.ToDoList.controllers;
 
 
-import kz.yerkhan.ToDoList.dto.AuthRequest;
 import kz.yerkhan.ToDoList.dto.CategoryRequest;
 import kz.yerkhan.ToDoList.dto.CategoryResponse;
 import kz.yerkhan.ToDoList.service.CategoryService;
