@@ -11,7 +11,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 @OpenAPIDefinition(
         info = @Info(title = "ToDo List API", version = "1.0", description = "API для управления задачами"),
-        security = @SecurityRequirement(name = "bearerAuth") // Применяем ко всему API
+        security = @SecurityRequirement(name = "bearerAuth")
 )
 @SecurityScheme(
         name = "bearerAuth",
