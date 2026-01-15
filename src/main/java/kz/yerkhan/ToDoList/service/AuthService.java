@@ -2,6 +2,7 @@ package kz.yerkhan.ToDoList.service;
 
 
 import kz.yerkhan.ToDoList.dto.AuthRequest;
+import kz.yerkhan.ToDoList.dto.TokenResponse;
 import kz.yerkhan.ToDoList.jwt.JwtUtils;
 import kz.yerkhan.ToDoList.models.Category;
 import kz.yerkhan.ToDoList.models.User;
@@ -27,7 +28,7 @@ public class AuthService {
 
 
     @Transactional
-    public String registerUser(AuthRequest request) {
+    public TokenResponse registerUser(AuthRequest request) {
         if (userRepository.existsByEmail(request.getEmail())) {
             throw new IllegalArgumentException("Email already in use");
         }
@@ -37,16 +38,23 @@ public class AuthService {
         userRepository.save(user);
         createDefaultCategories(user);
 
-        return jwtUtils.generateToken(user);
+        TokenResponse tokenResponse = new TokenResponse();
+        tokenResponse.setToken(jwtUtils.generateToken(user));
+
+        return tokenResponse;
     }
 
     @Transactional
-    public String login(String email, String password) {
+    public TokenResponse login(String email, String password) {
         User user = userRepository.findByEmail(email)
                 .orElseThrow();
         authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(email, password));
-        return jwtUtils.generateToken(user);
+
+        TokenResponse tokenResponse = new TokenResponse();
+        tokenResponse.setToken(jwtUtils.generateToken(user));
+
+        return tokenResponse;
     }
 
     private void createDefaultCategories(User user) {
