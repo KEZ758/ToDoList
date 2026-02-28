@@ -9,7 +9,7 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 public interface TodoRepository extends JpaRepository<Todo, Long> {
-    List<Todo> findAllByUserIdOrderByCreatedAtDesc(Long userId);
+    List<Todo> findAllByUserIdOrderByDueDateAsc(Long userId);
 
     Long countByUserIdAndDueDateBetween(Long userId, LocalDateTime start, LocalDateTime end);
 

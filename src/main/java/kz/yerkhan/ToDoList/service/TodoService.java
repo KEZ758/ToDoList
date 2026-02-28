@@ -99,7 +99,7 @@ public class TodoService {
         User user = userRepository.findByEmail(email)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
-        List<Todo> userTodos = todoRepository.findAllByUserIdOrderByCreatedAtDesc(user.getId());
+        List<Todo> userTodos = todoRepository.findAllByUserIdOrderByDueDateAsc(user.getId());
 
         return userTodos.stream()
                 .map(todoMapper::toResponse)
